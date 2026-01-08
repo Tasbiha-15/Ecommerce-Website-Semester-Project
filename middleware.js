@@ -42,13 +42,24 @@ export async function middleware(request) {
         // Treat as guest
     }
 
+    // Helper to ensure cookies are carried over on redirect
+    const redirect = (path) => {
+        const redirectUrl = new URL(path, request.url)
+        const myRedirect = NextResponse.redirect(redirectUrl)
+        // Copy cookies from the supabase-response to the redirect-response
+        response.cookies.getAll().forEach(cookie => {
+            myRedirect.cookies.set(cookie.name, cookie.value, cookie)
+        })
+        return myRedirect
+    }
+
     // Admin Protection Logic
     if (request.nextUrl.pathname.startsWith('/admin')) {
         console.log('Middleware: Checking Admin Access for path:', request.nextUrl.pathname)
 
         if (!user) {
             console.log('Middleware: No user found, redirecting to login')
-            return NextResponse.redirect(new URL('/login', request.url))
+            return redirect('/login')
         }
 
         console.log('Middleware: User found:', user.email)
@@ -71,7 +82,7 @@ export async function middleware(request) {
 
         if (profile?.role !== 'admin') {
             console.log('Middleware: Role mismatch, redirecting')
-            return NextResponse.redirect(new URL('/login', request.url))
+            return redirect('/login')
         }
     }
 
@@ -80,13 +91,19 @@ export async function middleware(request) {
         if (!user) {
             const redirectUrl = new URL('/login', request.url)
             redirectUrl.searchParams.set('next', '/checkout')
-            return NextResponse.redirect(redirectUrl)
+
+            // Re-implement redirect helper logic here since URL is dynamic
+            const myRedirect = NextResponse.redirect(redirectUrl)
+            response.cookies.getAll().forEach(cookie => {
+                myRedirect.cookies.set(cookie.name, cookie.value, cookie)
+            })
+            return myRedirect
         }
     }
 
     // Optional: Redirect logged in user from /login to /
     if (request.nextUrl.pathname === '/login' && user) {
-        return NextResponse.redirect(new URL('/', request.url))
+        return redirect('/')
     }
 
     return response

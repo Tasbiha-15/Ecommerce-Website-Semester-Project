@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Facebook, Twitter, Instagram, Youtube, MapPin, Phone, Mail, ArrowRight, CreditCard } from 'lucide-react'
+import { Facebook, Twitter, Instagram, Youtube, MapPin, Phone, Mail, ArrowRight, CreditCard, Heart } from 'lucide-react'
 
 export default function Footer() {
     const pathname = usePathname()
@@ -80,16 +80,23 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-slate-500">
-                    <div className="flex flex-col md:flex-row items-center gap-4">
+                <div className="border-t border-gray-200 pt-8 flex flex-col items-center justify-between gap-6 text-sm text-slate-500">
+                    <div className="flex flex-col md:flex-row items-center gap-4 w-full justify-between">
                         <p>© 2025 Maryam & Maria. All Rights Reserved.</p>
-                    </div>
 
-                    {/* Payment Icons */}
-                    <div className="flex items-center gap-3 opacity-70 grayscale hover:grayscale-0 transition-all">
-                        <div className="border border-gray-300 rounded px-2 py-1"><span className="font-bold text-[10px] italic">VISA</span></div>
-                        <div className="border border-gray-300 rounded px-2 py-1"><span className="font-bold text-[10px]">MC</span></div>
-                        <div className="border border-gray-300 rounded px-2 py-1"><span className="font-bold text-[10px]">AMEX</span></div>
+                        {/* Centered Credit */}
+                        <div className="flex items-center gap-2 group cursor-default">
+                            <span className="text-[10px] uppercase tracking-widest font-bold text-slate-400">Built with</span>
+                            <Heart className="h-3 w-3 text-rose-500 fill-rose-500 animate-pulse group-hover:scale-125 transition-transform" />
+                            <span className="text-[10px] uppercase tracking-widest font-bold text-slate-800">by Tasbiha</span>
+                        </div>
+
+                        {/* Payment Icons */}
+                        <div className="flex items-center gap-3 opacity-70 grayscale hover:grayscale-0 transition-all">
+                            <div className="border border-gray-300 rounded px-2 py-1"><span className="font-bold text-[10px] italic">VISA</span></div>
+                            <div className="border border-gray-300 rounded px-2 py-1"><span className="font-bold text-[10px]">MC</span></div>
+                            <div className="border border-gray-300 rounded px-2 py-1"><span className="font-bold text-[10px]">AMEX</span></div>
+                        </div>
                     </div>
                 </div>
             </div>

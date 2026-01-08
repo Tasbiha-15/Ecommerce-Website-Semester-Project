@@ -7,6 +7,7 @@ import { CartProvider } from "@/context/CartContext";
 import { AuthProvider } from '@/context/AuthContext'
 import { WishlistProvider } from '@/context/WishlistContext'
 import { Toaster } from "react-hot-toast";
+import ProfileModal from "@/components/ProfileModal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
 
               </div>
               <CartDrawer />
+              <ProfileModal />
               <Toaster position="bottom-right" toastOptions={{
                 style: {
                   background: '#333',

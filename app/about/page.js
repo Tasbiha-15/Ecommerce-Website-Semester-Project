@@ -28,53 +28,9 @@ export default function AboutPage() {
                     </p>
                 </div>
 
-                {/* Team Section */}
-                <div className="pt-8 border-t border-slate-50">
-                    <h2 className="text-2xl font-serif text-slate-900 text-center mb-8">Meet Our Team</h2>
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {/* Member 1 */}
-                        <div className="group text-center space-y-4 p-4 rounded-xl hover:bg-slate-300 transition-colors border border-transparent hover:border-slate-100 bg-slate-200">
-                            <div className="relative aspect-[3/4] w-3/4 mx-auto overflow-hidden rounded-lg bg-slate-100 shadow-sm border border-slate-100">
-                                <div className="absolute inset-0 flex items-center justify-center text-slate-300">
-                                    <span className="text-xs uppercase tracking-widest font-bold"><img src="/Images/Tasbiha.jpeg" alt="Photo" /></span>
-                                </div>
-                                <img src="/placeholder-member-1.jpg" alt="Team Member" className="w-full h-full object-cover opacity-0" />
-                            </div>
-                            <div>
-                                <h3 className="font-serif font-bold text-slate-900 text-lg">Tasbiha Ashraf</h3>
-                                <p className="text-xs text-slate-500 uppercase tracking-widest mt-1">23-NTU-CS-1215</p>
-                            </div>
-                        </div>
 
-                        {/* Member 2 */}
-                        <div className="group text-center space-y-4 p-4 rounded-xl hover:bg-slate-300 transition-colors border border-transparent hover:border-slate-100 bg-slate-200">
-                            <div className="relative aspect-[3/4] w-3/4 mx-auto overflow-hidden rounded-lg bg-slate-100 shadow-sm border border-slate-100">
-                                <div className="absolute inset-0 flex items-center justify-center text-slate-300">
-                                    <span className="text-xs uppercase tracking-widest font-bold"><img src="/Images/Zarnish.jpeg" alt="Photo" /></span>
-                                </div>
-                                <img src="/placeholder-member-2.jpg" alt="Team Member" className="w-full h-full object-cover opacity-0" />
-                            </div>
-                            <div>
-                                <h3 className="font-serif font-bold text-slate-900 text-lg">Zarnish Fatima</h3>
-                                <p className="text-xs text-slate-500 uppercase tracking-widest mt-1">23-NTU-CS-1219</p>
-                            </div>
-                        </div>
 
-                        {/* Member 3 */}
-                        <div className="group text-center space-y-4 p-4 rounded-xl hover:bg-slate-300 transition-colors border border-transparent hover:border-slate-100 bg-slate-200">
-                            <div className="relative aspect-[3/4] w-3/4 mx-auto overflow-hidden rounded-lg bg-slate-100 shadow-sm border border-slate-100">
-                                <div className="absolute inset-0 flex items-center justify-center text-slate-300">
-                                    <span className="text-xs uppercase tracking-widest font-bold"><img src="/Images/Mariam.jpeg" alt="Photo" /></span>
-                                </div>
-                                <img src="/placeholder-member-3.jpg" alt="Team Member" className="w-full h-full object-cover opacity-0" />
-                            </div>
-                            <div>
-                                <h3 className="font-serif font-bold text-slate-900 text-lg">Mariam Fatima</h3>
-                                <p className="text-xs text-slate-500 uppercase tracking-widest mt-1">23-NTU-CS-1172</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
                 {/* Values Grid */}
                 <div className="bg-slate-200 rounded-2xl p-8 md:p-12 border border-slate-100/50">

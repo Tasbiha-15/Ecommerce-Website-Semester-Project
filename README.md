@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🛍️ Ecommerce Website - Semester Project
 
-## Getting Started
+A modern, full-stack ecommerce platform developed for my **5th Semester Web Project**. This application features a complete shopping experience, from product browsing to a secure checkout flow.
 
-First, run the development server:
+## 🚀 Features
+* **User Authentication**: Secure signup and login powered by Supabase.
+* **Product Management**: Dynamic product listing with category filtering.
+* **Shopping Cart**: Fully functional cart and wishlist using React Context API.
+* **Admin Dashboard**: Dedicated space for managing products, analytics, and transactions.
+* **Responsive Design**: Mobile-friendly UI built with Tailwind CSS.
+* **Secure Payments**: Integrated payment intent flow via Stripe API.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Tech Stack
+* **Frontend**: [Next.js](https://nextjs.org/) (App Router)
+* **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+* **Backend/Database**: [Supabase](https://supabase.com/)
+* **State Management**: React Context API
+* **Middleware**: Custom Next.js middleware for protected admin routes.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📁 Project Structure
+* `/app`: Main application routes and API handlers.
+* `/components`: Reusable UI elements (Navbar, Footer, Product Cards).
+* `/context`: Global state management for Auth, Cart, and Wishlist.
+* `/public`: Static assets and product imagery.
+* `/utils/supabase`: Database configuration and schema setup.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ⚙️ Setup Instructions
+1. Clone the repository.
+2. Install dependencies using `npm install`.
+3. Set up your environment variables in `.env.local`.
+4. Run the development server with `npm run dev`.

@@ -108,17 +108,17 @@ export default function CartDrawer() {
                 {cart.length > 0 && (
                     <div className="p-6 border-t bg-gray-50 space-y-4">
                         <div className="space-y-3 text-sm">
-                            <div className="flex justify-between text-gray-500">
+                            <div className="flex justify-between text-slate-700 font-medium">
                                 <span>Subtotal</span>
-                                <span>PKR {cartTotal.toLocaleString()}</span>
+                                <span className="text-slate-900">PKR {cartTotal.toLocaleString()}</span>
                             </div>
-                            <div className="flex justify-between text-gray-500">
+                            <div className="flex justify-between text-slate-700 font-medium">
                                 <span>Shipping</span>
-                                <span className={shippingFee === 0 ? "text-emerald-600 font-bold" : ""}>
+                                <span className={shippingFee === 0 ? "text-emerald-600 font-bold" : "text-slate-900"}>
                                     {shippingFee === 0 ? 'Free' : `PKR ${shippingFee}`}
                                 </span>
                             </div>
-                            <div className="flex justify-between items-center text-lg font-bold pt-3 border-t">
+                            <div className="flex justify-between items-center text-lg font-bold pt-3 border-t border-slate-200 text-slate-900">
                                 <span>Total</span>
                                 <span>PKR {finalTotal.toLocaleString()}</span>
                             </div>
@@ -139,7 +139,7 @@ export default function CartDrawer() {
                                     router.push('/login?next=/checkout')
                                 }
                             }}
-                            className="w-full h-12 bg-slate-900 text-white font-serif uppercase tracking-widest hover:bg-slate-800 rounded-md shadow-none transition-colors">
+                            className="w-full h-12 bg-[#0a1128] text-white font-serif uppercase tracking-widest hover:bg-[#1a2340] rounded-md shadow-lg transition-colors">
                             {user ? 'Checkout' : 'Login to Checkout'}
                         </Button>
                     </div>

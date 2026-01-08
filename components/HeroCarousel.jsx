@@ -7,19 +7,19 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 const slides = [
     {
         id: 1,
-        image: "/images/Rani-35.png",
+        image: "/Images/Rani-35.png",
         type: "rani",
         position: "left"
     },
     {
         id: 2,
-        image: "/images/Formal-Edit-35.png",
+        image: "/Images/Formal-Edit-35.png",
         type: "formal",
         position: "right"
     },
     {
         id: 3,
-        image: "/images/Serena-35.png",
+        image: "/Images/Serena-35.png",
         type: "serene",
         position: "left"
     }

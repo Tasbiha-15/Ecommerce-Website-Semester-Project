@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react'
-import { Mail, Phone, X, Code, MapPin } from 'lucide-react'
+import { Mail, Phone, X, Code, MapPin, Github, Linkedin } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function ProfileModal() {
@@ -140,14 +140,41 @@ export default function ProfileModal() {
                                                 </div>
                                                 <span className="text-sm text-slate-600 font-medium">03367168911</span>
                                             </a>
+
+                                        </div>
+                                    </div>
+
+                                    {/* Social Links */}
+                                    <div className="pt-6 border-t border-slate-200">
+                                        <p className="text-[10px] text-slate-400 uppercase tracking-[0.2em] mb-3 font-bold">Follow On</p>
+                                        <div className="flex gap-4">
+                                            <a
+                                                href="https://github.com/Tasbiha-15"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center justify-center h-10 w-10 bg-slate-900 text-white rounded-lg hover:bg-slate-700 hover:scale-110 transition-all shadow-md"
+                                                title="GitHub"
+                                            >
+                                                <Github className="h-5 w-5" />
+                                            </a>
+                                            <a
+                                                href="https://www.linkedin.com/in/tasbiha-ashraf/"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center justify-center h-10 w-10 bg-[#0077b5] text-white rounded-lg hover:bg-[#006396] hover:scale-110 transition-all shadow-md"
+                                                title="LinkedIn"
+                                            >
+                                                <Linkedin className="h-5 w-5" />
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </motion.div>
-                    </div>
-                )}
-            </AnimatePresence>
+                    </div >
+                )
+                }
+            </AnimatePresence >
         </>
     )
 }

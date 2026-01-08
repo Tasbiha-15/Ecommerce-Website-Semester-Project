@@ -41,25 +41,33 @@ export default function CategorySection() {
                     <div className="w-16 h-[1.5px] bg-slate-200 mx-auto" />
                 </div>
 
-                {/* Staggered Grid (3+2+2) */}
-                <div className="max-w-6xl mx-auto space-y-12 md:space-y-16">
-                    {/* Row 1: Top 3 */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
-                        {CLOTHES.slice(0, 3).map((cat, i) => (
+                {/* Mobile: 2 columns, Desktop: Staggered Grid (3+2) */}
+                <div className="max-w-6xl mx-auto">
+                    {/* Mobile: Single 2-column grid for all items */}
+                    <div className="grid grid-cols-2 gap-6 md:hidden">
+                        {CLOTHES.map((cat, i) => (
                             <CategoryCard key={cat.id} category={cat} index={i} />
                         ))}
                     </div>
 
-                    {/* Row 2: Middle 2 (Aligned and Centered) */}
-                    <div className="flex justify-center">
-                        <div className="grid grid-cols-2 gap-6 md:gap-10 w-full md:w-2/3">
-                            {CLOTHES.slice(3, 5).map((cat, i) => (
-                                <CategoryCard key={cat.id} category={cat} index={i + 3} />
+                    {/* Desktop: Staggered layout */}
+                    <div className="hidden md:block space-y-16">
+                        {/* Row 1: Top 3 */}
+                        <div className="grid grid-cols-3 gap-10">
+                            {CLOTHES.slice(0, 3).map((cat, i) => (
+                                <CategoryCard key={cat.id} category={cat} index={i} />
                             ))}
                         </div>
+
+                        {/* Row 2: Bottom 2 (Centered) */}
+                        <div className="flex justify-center">
+                            <div className="grid grid-cols-2 gap-10 w-2/3">
+                                {CLOTHES.slice(3, 5).map((cat, i) => (
+                                    <CategoryCard key={cat.id} category={cat} index={i + 3} />
+                                ))}
+                            </div>
+                        </div>
                     </div>
-
-
                 </div>
             </div>
         </section>

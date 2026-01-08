@@ -79,7 +79,7 @@ export default function Navbar() {
             )}
         >
             {/* Top Row: Mobile Menu | Logo (Center) | Icons (Right) */}
-            <div className="container mx-auto px-4 py-6 flex items-center justify-between relative">
+            <div className="container mx-auto px-3 py-4 lg:px-4 lg:py-6 flex items-center justify-between relative flex-nowrap">
 
                 {/* Mobile Menu Spacer */}
                 <div className="flex items-center gap-4 w-1/4">
@@ -92,7 +92,7 @@ export default function Navbar() {
                 {/* Brand Logo - Absolute Center */}
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
                     <Link href="/" className="group block">
-                        <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold tracking-[0.2em] text-slate-900 uppercase whitespace-nowrap">
+                        <h1 className="text-lg md:text-3xl lg:text-4xl font-serif font-bold tracking-[0.2em] text-slate-900 uppercase whitespace-nowrap">
                             Maryum <span className="font-light text-slate-400">&</span> Maria
                         </h1>
                     </Link>
@@ -131,7 +131,7 @@ export default function Navbar() {
                                 onClick={() => setIsSearchOpen(true)}
                                 className="text-slate-900 hover:text-rose-600 transition-colors"
                             >
-                                <Search className="h-5 w-5" />
+                                <Search className="h-4 w-4 lg:h-5 lg:w-5" />
                             </button>
                         )}
                     </div>
@@ -167,14 +167,14 @@ export default function Navbar() {
                             </div>
                         ) : (
                             <Link href="/login" className="text-slate-900 hover:text-rose-600 transition-colors" title="Login / Sign Up">
-                                <User className="h-5 w-5" />
+                                <User className="h-4 w-4 lg:h-5 lg:w-5" />
                             </Link>
                         )}
                     </div>
 
                     <div className="hidden lg:flex items-center gap-5">
                         <Link href="/wishlist" className="relative text-slate-900 hover:text-rose-600 transition-colors">
-                            <Heart className="h-5 w-5" />
+                            <Heart className="h-4 w-4 lg:h-5 lg:w-5" />
                             {wishlistCount > 0 && (
                                 <span className="absolute -top-1.5 -right-1.5 h-4 w-4 bg-rose-600 text-white rounded-full flex items-center justify-center text-[9px] font-bold">
                                     {wishlistCount}
@@ -184,7 +184,7 @@ export default function Navbar() {
                     </div>
 
                     <button className="relative text-slate-900 hover:text-rose-600 transition-colors" onClick={() => setIsOpen(true)}>
-                        <ShoppingCart className="h-5 w-5" />
+                        <ShoppingCart className="h-4 w-4 lg:h-5 lg:w-5" />
                         {totalItems > 0 && (
                             <span className="absolute -top-1.5 -right-1.5 h-4 w-4 bg-rose-600 text-white rounded-full flex items-center justify-center text-[9px] font-bold">
                                 {totalItems}

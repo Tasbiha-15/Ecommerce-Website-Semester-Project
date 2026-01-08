@@ -20,7 +20,7 @@ export default function ProfileModal() {
             {/* Modal Overlay and Content */}
             <AnimatePresence>
                 {isOpen && (
-                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+                    <div className="fixed inset-0 z-[100] flex items-start md:items-center justify-center p-4 pt-10 md:p-4">
                         {/* Overlay */}
                         <motion.div
                             initial={{ opacity: 0 }}
@@ -35,23 +35,23 @@ export default function ProfileModal() {
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="relative w-full max-w-4xl bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200"
+                            className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto md:overflow-visible"
                         >
                             {/* Close Button */}
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="absolute top-4 right-4 z-10 p-2 bg-white/80 backdrop-blur-md rounded-full text-slate-500 hover:text-rose-600 transition-colors shadow-sm"
+                                className="absolute top-4 right-4 z-50 p-2 bg-white/80 backdrop-blur-md rounded-full text-slate-500 hover:text-rose-600 transition-colors shadow-sm"
                             >
                                 <X className="h-5 w-5" />
                             </button>
 
                             <div className="grid grid-cols-1 md:grid-cols-5 h-auto md:h-[550px]">
                                 {/* Left Side: Image (40%) */}
-                                <div className="md:col-span-2 bg-slate-100 flex items-center justify-center p-8 border-r border-slate-100">
+                                <div className="md:col-span-2 bg-slate-100 flex items-center justify-center p-8 border-r border-slate-100 h-64 md:h-auto">
                                     <img
                                         src="/Images/Tasbiha.jpeg"
                                         alt="Tasbiha Ashraf"
-                                        className="h-64 w-64 md:h-80 md:w-80 object-cover rounded-2xl shadow-xl border-4 border-white"
+                                        className="h-full w-auto md:h-120 md:w-100 object-cover rounded-2xl shadow-xl border-4 border-white"
                                     />
                                 </div>
 
@@ -97,15 +97,15 @@ export default function ProfileModal() {
                                     </div>
 
                                     {/* Project Focus */}
-                                    <div className="bg-slate-900 p-6 rounded-2xl text-white shadow-xl shadow-slate-200 relative overflow-hidden group">
+                                    <div className="bg-slate-200 p-6 rounded-2xl text-white shadow-xl shadow-slate-200 relative overflow-hidden group">
                                         <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
                                             <Code className="h-12 w-12" />
                                         </div>
                                         <p className="text-[10px] text-slate-400 uppercase tracking-[0.2em] mb-2 font-bold">Semester Project</p>
-                                        <p className="text-sm font-bold leading-relaxed mb-1">
+                                        <p className="text-sm font-bold leading-relaxed mb-1 text-slate-900">
                                             WAD (WEB APPLICATION DEVELOPMENT)
                                         </p>
-                                        <p className="text-xs text-slate-300 font-mono">
+                                        <p className="text-xs text-slate-900 font-mono">
                                             COURSE-CSE-4080L
                                         </p>
                                     </div>

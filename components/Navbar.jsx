@@ -187,6 +187,7 @@ export default function Navbar() {
                         <Link href="/category/formal-edit" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold uppercase tracking-widest hover:text-rose-600">Formal Edit</Link>
                         <Link href="/category/wedding-edit" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold uppercase tracking-widest hover:text-rose-600">Wedding Edit</Link>
                         <Link href="/category/luxury-unstitched" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold uppercase tracking-widest hover:text-rose-600">Unstitched</Link>
+                        <Link href="/products" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold uppercase tracking-widest hover:text-rose-600">Shop All</Link>
                         <hr className="border-gray-100" />
                         <div className="flex justify-center gap-8">
                             <Link href="/wishlist" onClick={() => setIsMenuOpen(false)} className="text-sm font-medium uppercase tracking-widest flex items-center gap-2 hover:text-rose-600">

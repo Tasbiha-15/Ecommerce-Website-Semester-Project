@@ -39,7 +39,7 @@ export default function AboutPage() {
                         {/* Tasbiha */}
                         <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center hover:shadow-md transition-shadow">
                             <div className="w-48 h-64 mx-auto mb-4 overflow-hidden rounded-xl bg-white shadow-sm p-1">
-                                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=400&h=500&fit=crop" alt="Ayesha Khan" className="w-full h-full object-cover rounded-lg" />
+                                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=400&h=500&fit=crop" alt="Ayesha Khan" className="w-full h-full object-cover rounded-lg" loading="lazy" />
                             </div>
                             <h3 className="font-serif font-bold text-lg text-slate-900">Ayesha Khan</h3>
                             <p className="text-xs text-slate-500 uppercase tracking-widest mt-1">Chief Executive Officer (CEO)</p>
@@ -47,7 +47,7 @@ export default function AboutPage() {
                         {/* Zarnish */}
                         <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center hover:shadow-md transition-shadow">
                             <div className="w-48 h-64 mx-auto mb-4 overflow-hidden rounded-xl bg-white shadow-sm p-1">
-                                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=400&h=500&fit=crop" alt="Sara Ahmed" className="w-full h-full object-cover rounded-lg" />
+                                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=400&h=500&fit=crop" alt="Sara Ahmed" className="w-full h-full object-cover rounded-lg" loading="lazy" />
                             </div>
                             <h3 className="font-serif font-bold text-lg text-slate-900">Sara Ahmed</h3>
                             <p className="text-xs text-slate-500 uppercase tracking-widest mt-1">Creative Director</p>
@@ -55,7 +55,7 @@ export default function AboutPage() {
                         {/* Mariam */}
                         <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center hover:shadow-md transition-shadow">
                             <div className="w-48 h-64 mx-auto mb-4 overflow-hidden rounded-xl bg-white shadow-sm p-1">
-                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&h=500&fit=crop" alt="Zoya Malik" className="w-full h-full object-cover rounded-lg" />
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&h=500&fit=crop" alt="Zoya Malik" className="w-full h-full object-cover rounded-lg" loading="lazy" />
                             </div>
                             <h3 className="font-serif font-bold text-lg text-slate-900">Zoya Malik</h3>
                             <p className="text-xs text-slate-500 uppercase tracking-widest mt-1">Operations Manager</p>

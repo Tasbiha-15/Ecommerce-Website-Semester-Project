@@ -70,8 +70,6 @@ function ProductManagementContent() {
             if (!res.ok) throw new Error('Failed to fetch categories')
 
             const data = await res.json()
-            console.log(`fetchCategories received ${data?.length || 0} categories:`, data) // Debug log
-
             if (Array.isArray(data) && data.length > 0) {
                 setCategories(data)
                 // Set default category_id to first category's ID
@@ -182,8 +180,6 @@ function ProductManagementContent() {
                 payload.available_sizes = ['S', 'M', 'L']
             }
 
-            console.log('Sending payload:', JSON.stringify(payload, null, 2)) // Debug log
-
             // Timeout logic
             const controller = new AbortController()
             const timeoutId = setTimeout(() => controller.abort(), 10000) // 10 second timeout
@@ -205,7 +201,6 @@ function ProductManagementContent() {
             }
 
             const result = await res.json()
-            console.log('API Response:', result) // Debug log
 
             if (res.ok) {
                 toast.success(`Product ${editingProduct ? 'updated' : 'created'} successfully!`)

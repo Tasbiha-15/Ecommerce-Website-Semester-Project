@@ -55,19 +55,13 @@ export async function middleware(request) {
 
     // Admin Protection Logic
     if (request.nextUrl.pathname.startsWith('/admin')) {
-        console.log('Middleware: Checking Admin Access for path:', request.nextUrl.pathname)
-
         if (!user) {
-            console.log('Middleware: No user found, redirecting to login')
             return redirect('/login')
         }
-
-        console.log('Middleware: User found:', user.email)
 
         // 1. Hardcoded Email Bypass
         const allowedEmails = ['tasbiha125@gmail.com', 'tasbiha1215@gmail.com']
         if (allowedEmails.includes(user.email)) {
-            console.log('Middleware: Email allowed (bypass)')
             return response
         }
 
@@ -78,10 +72,7 @@ export async function middleware(request) {
             .eq('id', user.id)
             .maybeSingle()
 
-        console.log('Middleware: Profile Role:', profile?.role)
-
         if (profile?.role !== 'admin') {
-            console.log('Middleware: Role mismatch, redirecting')
             return redirect('/login')
         }
     }

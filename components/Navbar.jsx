@@ -100,41 +100,13 @@ export default function Navbar() {
 
                 {/* Right Icons */}
                 <div className="flex items-center justify-end gap-5 w-1/4">
-                    {/* Search Input - Expands on Click */}
-                    <div className={`relative flex items-center transition-all duration-300 ${isSearchOpen ? 'w-48' : 'w-5'}`}>
-                        {isSearchOpen ? (
-                            <form
-                                onSubmit={(e) => {
-                                    e.preventDefault()
-                                    if (searchQuery.trim()) {
-                                        router.push(`/products?search=${encodeURIComponent(searchQuery)}`)
-                                        setIsSearchOpen(false)
-                                    }
-                                }}
-                                className="w-full relative"
-                            >
-                                <input
-                                    type="text"
-                                    autoFocus
-                                    placeholder="Search..."
-                                    className="w-full pl-2 pr-8 py-1 text-xs border-b border-slate-300 focus:border-slate-900 outline-none bg-transparent placeholder:text-slate-400"
-                                    value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                    onBlur={() => !searchQuery && setIsSearchOpen(false)}
-                                />
-                                <button type="submit" className="absolute right-0 top-1/2 -translate-y-1/2 text-slate-400 hover:text-rose-600">
-                                    <Search className="h-3 w-3" />
-                                </button>
-                            </form>
-                        ) : (
-                            <button
-                                onClick={() => setIsSearchOpen(true)}
-                                className="text-slate-900 hover:text-rose-600 transition-colors"
-                            >
-                                <Search className="h-4 w-4 lg:h-5 lg:w-5" />
-                            </button>
-                        )}
-                    </div>
+                    {/* Search Trigger Button */}
+                    <button
+                        onClick={() => setIsSearchOpen(true)}
+                        className="text-slate-900 hover:text-rose-600 transition-colors"
+                    >
+                        <Search className="h-4 w-4 lg:h-5 lg:w-5" />
+                    </button>
 
                     {/* Auth Buttons (Desktop) */}
                     <div className="hidden lg:flex items-center gap-4 border-r border-gray-200 pr-4 mr-4">
@@ -229,6 +201,61 @@ export default function Navbar() {
                                     <User className="h-4 w-4" /> Login
                                 </Link>
                             )}
+                        </div>
+                    </div>
+                </div>
+            )}
+            {/* Search Drawer (Right Side) */}
+            {isSearchOpen && (
+                <div className="fixed inset-0 z-[100] flex justify-end">
+                    {/* Overlay */}
+                    <div
+                        className="absolute inset-0 animate-in fade-in duration-300"
+                        onClick={() => setIsSearchOpen(false)}
+                    ></div>
+
+                    {/* Drawer Panel */}
+                    <div className="relative w-[85%] max-w-md h-screen bg-white opacity-100 shadow-2xl animate-in slide-in-from-right duration-300 flex flex-col">
+                        {/* Header */}
+                        <div className="flex items-center justify-between p-6 border-b border-gray-100">
+                            <h2 className="text-sm font-serif font-bold tracking-[0.1em] text-slate-900 uppercase">
+                                Search Our Site
+                            </h2>
+                            <button
+                                onClick={() => setIsSearchOpen(false)}
+                                className="text-slate-500 hover:text-rose-600 transition-colors"
+                            >
+                                <X className="h-6 w-6" />
+                            </button>
+                        </div>
+
+                        {/* Search Body */}
+                        <div className="p-6">
+                            <form
+                                onSubmit={(e) => {
+                                    e.preventDefault()
+                                    if (searchQuery.trim()) {
+                                        router.push(`/products?search=${encodeURIComponent(searchQuery)}`)
+                                        setIsSearchOpen(false)
+                                    }
+                                }}
+                                className="relative"
+                            >
+                                <input
+                                    type="text"
+                                    autoFocus
+                                    placeholder="Search"
+                                    className="w-full pl-5 pr-12 py-3 rounded-full border border-slate-200 focus:border-slate-900 outline-none text-sm placeholder:text-slate-400 transition-colors"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                />
+                                <button
+                                    type="submit"
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-900 transition-colors"
+                                >
+                                    <Search className="h-5 w-5" />
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

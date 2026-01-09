@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import Image from 'next/image'
 
 // Official Maryum N Maria slides - 3 slides
 const slides = [
@@ -53,11 +54,17 @@ export default function HeroCarousel() {
                     className="absolute inset-0"
                 >
                     {/* Background Image */}
-                    <img
-                        src={currentSlide.image}
-                        alt="Hero Slide"
-                        className="h-full w-full object-cover"
-                    />
+                    <div className="absolute inset-0">
+                        <Image
+                            src={currentSlide.image}
+                            alt="Hero Slide"
+                            fill
+                            className="object-cover"
+                            priority={true}
+                            sizes="100vw"
+                            quality={85}
+                        />
+                    </div>
                     <div className="absolute inset-0 bg-black/10" />
 
                     {/* Text Content - Position based on slide */}
@@ -66,7 +73,7 @@ export default function HeroCarousel() {
                             initial={{ y: 30, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className={`flex flex-col ${currentSlide.position === 'right' ? 'items-end text-right' : 'items-start text-left'} space-y-4`}
+                            className={`flex flex-col ${currentSlide.position === 'right' ? 'items-end text-right' : 'items-start text-left'} space-y-4 relative z-10`}
                         >
                             {/* Slide 1: Rani - Urdu/Arabic style */}
                             {currentSlide.type === 'rani' && (

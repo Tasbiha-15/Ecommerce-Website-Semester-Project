@@ -33,68 +33,78 @@ export async function middleware(request) {
         }
     )
 
-    let user = null
-    try {
-        const { data: { user: authUser } } = await supabase.auth.getUser()
-        user = authUser
-    } catch (e) {
-        console.error('Middleware: Error fetching user:', e)
-        // Treat as guest
-    }
+    const path = request.nextUrl.pathname
 
-    // Helper to ensure cookies are carried over on redirect
-    const redirect = (path) => {
-        const redirectUrl = new URL(path, request.url)
-        const myRedirect = NextResponse.redirect(redirectUrl)
-        // Copy cookies from the supabase-response to the redirect-response
-        response.cookies.getAll().forEach(cookie => {
-            myRedirect.cookies.set(cookie.name, cookie.value, cookie)
-        })
-        return myRedirect
-    }
+    // Define protected paths and auth-related paths
+    // We strictly check these to avoid blocking public pages (Home, Products, etc.)
+    const isProtectedPath = path.startsWith('/admin') || path.startsWith('/checkout')
+    const isAuthPath = path === '/login' || path === '/signup'
 
-    // Admin Protection Logic
-    if (request.nextUrl.pathname.startsWith('/admin')) {
-        if (!user) {
-            return redirect('/login')
+    // Only run expensive getUser for protected or auth paths
+    // This allows public pages (landing, products) to load instantly without waiting for Supabase
+    if (isProtectedPath || isAuthPath) {
+        let user = null
+        try {
+            const { data: { user: authUser } } = await supabase.auth.getUser()
+            user = authUser
+        } catch (e) {
+            // Error fetching user, treat as guest
         }
 
-        // 1. Hardcoded Email Bypass
-        const allowedEmails = ['tasbiha125@gmail.com', 'tasbiha1215@gmail.com']
-        if (allowedEmails.includes(user.email)) {
-            return response
-        }
-
-        // 2. Database Role Check
-        const { data: profile } = await supabase
-            .from('profiles')
-            .select('role')
-            .eq('id', user.id)
-            .maybeSingle()
-
-        if (profile?.role !== 'admin') {
-            return redirect('/login')
-        }
-    }
-
-    // Checkout Protection Logic
-    if (request.nextUrl.pathname.startsWith('/checkout')) {
-        if (!user) {
-            const redirectUrl = new URL('/login', request.url)
-            redirectUrl.searchParams.set('next', '/checkout')
-
-            // Re-implement redirect helper logic here since URL is dynamic
+        // Helper to ensure cookies are carried over on redirect
+        const redirect = (newPath) => {
+            const redirectUrl = new URL(newPath, request.url)
             const myRedirect = NextResponse.redirect(redirectUrl)
+            // Copy cookies from the supabase-response to the redirect-response
             response.cookies.getAll().forEach(cookie => {
                 myRedirect.cookies.set(cookie.name, cookie.value, cookie)
             })
             return myRedirect
         }
-    }
 
-    // Optional: Redirect logged in user from /login to /
-    if (request.nextUrl.pathname === '/login' && user) {
-        return redirect('/')
+        // Admin Protection Logic
+        if (path.startsWith('/admin')) {
+            if (!user) {
+                return redirect('/login')
+            }
+
+            // 1. Hardcoded Email Bypass
+            const allowedEmails = ['tasbiha125@gmail.com', 'tasbiha1215@gmail.com']
+            if (allowedEmails.includes(user.email)) {
+                return response
+            }
+
+            // 2. Database Role Check
+            const { data: profile } = await supabase
+                .from('profiles')
+                .select('role')
+                .eq('id', user.id)
+                .maybeSingle()
+
+            if (profile?.role !== 'admin') {
+                return redirect('/login')
+            }
+        }
+
+        // Checkout Protection Logic
+        if (path.startsWith('/checkout')) {
+            if (!user) {
+                const redirectUrl = new URL('/login', request.url)
+                redirectUrl.searchParams.set('next', '/checkout')
+
+                // Manually construct redirect to preserve cookies
+                const myRedirect = NextResponse.redirect(redirectUrl)
+                response.cookies.getAll().forEach(cookie => {
+                    myRedirect.cookies.set(cookie.name, cookie.value, cookie)
+                })
+                return myRedirect
+            }
+        }
+
+        // Redirect logged in user from /login or /signup to /
+        if (isAuthPath && user) {
+            return redirect('/')
+        }
     }
 
     return response
@@ -107,8 +117,8 @@ export const config = {
          * - _next/static (static files)
          * - _next/image (image optimization files)
          * - favicon.ico (favicon file)
-         * Feel free to modify this pattern to include more paths.
+         * - public folder files (images, fonts, etc.)
          */
-        '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+        '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|woff|woff2|tff|eot)$).*)',
     ],
 }
